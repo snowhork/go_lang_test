@@ -1,0 +1,3 @@
+gom 'github.com/labstack/echo/'
+gom 'github.com/jinzhu/gorm'
+gom 'bitbucket.org/liamstask/goose/cmd/goose'
