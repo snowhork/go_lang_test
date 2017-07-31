@@ -9,6 +9,8 @@ services:
             - MYSQL_PASSWORD=pass
         ports:
             - 3308:3306
+        volumes:
+            - sql-data:/var/lib/mysql
     web:
         build: .
         command: /go/bin/godo server --watch
@@ -21,4 +23,4 @@ services:
             - db
 volumes:
   vendor:
-    driver: local
+  sql-data:

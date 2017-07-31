@@ -10,7 +10,7 @@ import (
 	"strconv"
 )
 
-var db  *gorm.DB
+var db *gorm.DB
 
 func Init() {
 	DBMS     := "mysql"
