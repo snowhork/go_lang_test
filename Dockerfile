@@ -18,4 +18,6 @@ RUN go get -u gopkg.in/godo.v2/cmd/godo
 
 WORKDIR /go/src/myapp
 
+ENV PATH $PATH:$GOPATH/bin
+
 EXPOSE 1323
