@@ -1,3 +1,4 @@
 .idea/*
+vendor/*
 
-myapp/Gododir/godobin*
+src/myapp/Gododir/godobin*

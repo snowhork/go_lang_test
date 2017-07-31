@@ -13,8 +13,12 @@ services:
         build: .
         command: /go/bin/godo server --watch
         volumes:
-            - ./myapp:/go/src/myapp
+            - ./src/myapp:/go/src/myapp
+            - ./vendor:/go/src/
         ports:
             - 1323:1323
         links:
             - db
+volumes:
+  vendor:
+    driver: local
