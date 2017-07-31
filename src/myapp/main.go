@@ -3,11 +3,14 @@ package main
 import (
 	"net/http"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"myapp/models"
+
 	"strconv"
+
+	"myapp/models"
 )
 
 var db *gorm.DB
@@ -27,6 +30,11 @@ func main() {
 	Init()
 
 	e := echo.New()
+
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Format: "method=${method}, uri=${uri}, status=${status}, time=${time_rfc3339_nano} \n",
+	}))
+
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!!!")
 	})
