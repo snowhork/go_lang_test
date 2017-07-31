@@ -16,5 +16,5 @@ services:
             - ./myapp:/go/src/myapp
         ports:
             - 1323:1323
-        depends_on:
+        links:
             - db

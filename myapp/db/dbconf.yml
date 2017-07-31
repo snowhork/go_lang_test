@@ -4,7 +4,7 @@ test:
 
 development:
     driver: mymysql
-    open: tcp:localhost:3306*myapp/root/
+    open: tcp:db:3306*myapp/user/pass
     
 production:
     driver: postgres
