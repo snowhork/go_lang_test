@@ -24,6 +24,7 @@ func Init() {
 
 	CONNECT := USER+":"+PASS+"@"+PROTOCOL+"/"+DBNAME
 	db, _ = gorm.Open(DBMS, CONNECT)
+	db.LogMode(true)
 }
 
 func main() {
