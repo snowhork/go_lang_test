@@ -15,7 +15,6 @@ RUN go get -u bitbucket.org/liamstask/goose/cmd/goose
 
 ENV PATH $PATH:$GOPATH/bin
 
-
 WORKDIR /go/src/myapp
 
 EXPOSE 1323
