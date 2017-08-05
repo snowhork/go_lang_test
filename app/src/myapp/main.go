@@ -45,6 +45,7 @@ func main() {
 		db.First(&user)
 		return c.String(http.StatusOK, "Users, Index name = " + user.Name + strconv.FormatInt(user.Id, 10))
 	})
+	e.GET("/stages", StagesIndex)
 	e.GET("/hoges", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hoge, Inde")
 	})
