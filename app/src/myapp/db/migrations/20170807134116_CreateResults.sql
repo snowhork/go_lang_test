@@ -4,6 +4,7 @@
 CREATE TABLE results (
     id int NOT NULL AUTO_INCREMENT,
     user_id int NOT NULL,
+    stage_id int NOT NULL,
     status bool DEFAULT false,
     created_at datetime,
     updated_at datetime,
