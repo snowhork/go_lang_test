@@ -11,7 +11,6 @@ func Init() {
 	PROTOCOL := "tcp(db:3306)"
 	DBNAME   := "myapp"
 
-
 	CONNECT := USER+":"+PASS+"@"+PROTOCOL+"/"+DBNAME
 	Db, _ = gorm.Open(DBMS, CONNECT)
 	Db.LogMode(true)

@@ -3,8 +3,8 @@ package model
 import "time"
 
 type Result struct {
-	Id int64
-	UserId int64
+	Id int
+	UserId int
 	Status bool
 	CreatedAt time.Time
 }

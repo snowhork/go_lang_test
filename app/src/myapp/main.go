@@ -28,7 +28,8 @@ func main() {
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, World!!!")
 	})
-	e.GET("/user", func(c echo.Context) error {
+	e.POST("/results", controller.ResultsCreate)
+	e.GET("/users", func(c echo.Context) error {
 		user := model.User{}
 		user.Id = 3
 		db.Db.First(&user)
