@@ -14,7 +14,7 @@ services:
 
     app:
         build: ./app
-        command: /go/bin/godo server --watch
+        command: godo server --watch
         volumes:
             - ./app/src/myapp:/go/src/myapp
             - ./app/vendor:/go/src/

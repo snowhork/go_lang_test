@@ -10,10 +10,11 @@ import (
 
 	"strconv"
 
-	"myapp/models"
+	"myapp/model"
+	"myapp/controller"
 )
 
-var db *gorm.DB
+var Db *gorm.DB
 
 func Init() {
 	DBMS     := "mysql"
@@ -22,9 +23,10 @@ func Init() {
 	PROTOCOL := "tcp(db:3306)"
 	DBNAME   := "myapp"
 
+
 	CONNECT := USER+":"+PASS+"@"+PROTOCOL+"/"+DBNAME
-	db, _ = gorm.Open(DBMS, CONNECT)
-	db.LogMode(true)
+	Db, _ = gorm.Open(DBMS, CONNECT)
+	Db.LogMode(true)
 }
 
 func main() {
@@ -40,12 +42,12 @@ func main() {
 		return c.String(http.StatusOK, "Hello, World!!!")
 	})
 	e.GET("/user", func(c echo.Context) error {
-		user := models.User{}
+		user := model.User{}
 		user.Id = 3
-		db.First(&user)
+		Db.First(&user)
 		return c.String(http.StatusOK, "Users, Index name = " + user.Name + strconv.FormatInt(user.Id, 10))
 	})
-	e.GET("/stages", StagesIndex)
+	e.GET("/stages", controller.StagesIndex)
 	e.GET("/hoges", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hoge, Inde")
 	})
