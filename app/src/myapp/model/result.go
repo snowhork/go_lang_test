@@ -1,12 +1,15 @@
 package model
 
-import "time"
+import (
+	"time"
+)
 
 type Result struct {
 	Id int
-	UserId int
+	UserId int `validate:"nonzero"`
+	StageId int `validate:"nonzero"`
 	Status bool
 	CreatedAt time.Time
+	UpdatedAt time.Time
 }
-
 

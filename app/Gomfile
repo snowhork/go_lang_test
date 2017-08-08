@@ -1,4 +1,4 @@
 gom 'github.com/labstack/echo/'
 gom 'github.com/jinzhu/gorm'
-gom 'github.com/wcl48/valval'
+gom 'gopkg.in/validator.v2'
 

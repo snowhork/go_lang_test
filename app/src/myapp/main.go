@@ -29,6 +29,7 @@ func main() {
 		return c.String(http.StatusOK, "Hello, World!!!")
 	})
 	e.POST("/results", controller.ResultsCreate)
+	e.PATCH("/results/:id", controller.ResultsUpdate)
 	e.GET("/users", func(c echo.Context) error {
 		user := model.User{}
 		user.Id = 3
