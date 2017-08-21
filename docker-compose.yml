@@ -1,7 +1,7 @@
 version: '2'
 services:
     db:
-        image: mysql:5.7
+        build: ./db
         environment:
             - MYSQL_ROOT_PASSWORD=pass
             - MYSQL_DATABASE=myapp
@@ -9,12 +9,20 @@ services:
             - MYSQL_PASSWORD=pass
         ports:
             - 3308:3306
-    web:
-        build: .
-        command: /go/bin/godo server --watch
         volumes:
-            - ./myapp:/go/src/myapp
+            - sql-data:/var/lib/mysql
+
+    app:
+        build: ./app
+        command: godo server --watch
+        volumes:
+            - ./app/src/myapp:/go/src/myapp
+            - ./app/vendor:/go/src/
         ports:
             - 1323:1323
-        depends_on:
+        links:
             - db
+
+volumes:
+  vendor:
+  sql-data:

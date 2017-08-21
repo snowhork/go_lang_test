@@ -10,11 +10,10 @@ RUN apt-get -q update && \
 
 ENV LANG=ja_JP.UTF-8
 
-RUN go get github.com/mattn/gom
-ADD Gomfile /go/src/
-WORKDIR /go/src/
-RUN gom install
 RUN go get -u gopkg.in/godo.v2/cmd/godo
+RUN go get -u bitbucket.org/liamstask/goose/cmd/goose
+
+ENV PATH $PATH:$GOPATH/bin
 
 WORKDIR /go/src/myapp
 
