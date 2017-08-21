@@ -17,7 +17,7 @@ services:
         command: godo server --watch
         volumes:
             - ./app/src/myapp:/go/src/myapp
-            - ./app/vendor:/go/src/
+            - ./vendor:/go/src/
         ports:
             - 1323:1323
         links:
