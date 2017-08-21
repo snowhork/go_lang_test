@@ -4,3 +4,11 @@ gom install
 docker-compose build
 docker-compose up
 ```
+
+localhost:1323 にアクセス
+
+次回から、
+```
+docker-compose up
+```
+でOK
