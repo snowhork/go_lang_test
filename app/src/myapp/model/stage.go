@@ -3,9 +3,9 @@ package model
 import "time"
 
 type Stage struct {
-	Id int64
+	Id int
 	Name string `sql:"size:255"`
-	UserId int64
+	UserId int
 	Csv string
 	CreatedAt time.Time
 }

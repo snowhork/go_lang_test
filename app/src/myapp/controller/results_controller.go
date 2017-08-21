@@ -25,6 +25,8 @@ func ResultsCreate(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, map[string]interface{}{"error": errs})
 	}
 
+	db.Db.Save(&result)
+
 	return c.JSON(http.StatusOK, map[string]int{"result_id": result.Id})
 }
 

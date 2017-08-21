@@ -7,9 +7,6 @@ import (
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 
-	"strconv"
-
-	"myapp/model"
 	"myapp/db"
 	"myapp/controller"
 )
@@ -30,16 +27,8 @@ func main() {
 	})
 	e.POST("/results", controller.ResultsCreate)
 	e.PATCH("/results/:id", controller.ResultsUpdate)
-	e.GET("/users", func(c echo.Context) error {
-		user := model.User{}
-		user.Id = 3
-		db.Db.First(&user)
-		return c.String(http.StatusOK, "Users, Index name = " + user.Name + strconv.FormatInt(user.Id, 10))
-	})
 	e.GET("/stages", controller.StagesIndex)
-	e.GET("/hoges", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hoge, Inde")
-	})
+	e.POST("/stages", controller.StagesCreate)
 	e.Logger.Fatal(e.Start(":1323"))
 }
 
