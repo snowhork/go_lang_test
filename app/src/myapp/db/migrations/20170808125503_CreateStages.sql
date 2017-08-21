@@ -5,7 +5,6 @@ CREATE TABLE stages (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(255) NOT NULL,
     user_id int NOT NULL,
-    çsv varchar(255) NOT NULL,
     created_at datetime,
     PRIMARY KEY(id)
 );
