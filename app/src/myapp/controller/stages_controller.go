@@ -141,3 +141,25 @@ func StagesCreate(c echo.Context) error {
 	return c.JSON(http.StatusOK, map[string]int{"stage_id": stage.Id})
 }
 
+
+func StagesDelete(c echo.Context) error {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{"error": err.Error()})
+	}
+
+	stage := model.Stage{}
+	db.Db.First(&stage, id)
+
+	if stage.Id == 0 {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{"error": "Stage not Found"})
+	}
+
+	user_id := 1
+	if stage.UserId != user_id {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{"error": "Permission denied"})
+	}
+
+	db.Db.Delete(&stage, id)
+	return c.JSON(http.StatusOK, map[string]int{})
+}

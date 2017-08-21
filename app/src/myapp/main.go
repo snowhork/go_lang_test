@@ -33,6 +33,7 @@ func main() {
 	e.GET("/stages", controller.StagesIndex)
 	e.GET("/stages/:id", controller.StagesShow)
 	e.POST("/stages", controller.StagesCreate)
+	e.DELETE("/stages/:id", controller.StagesDelete)
 	e.Logger.Fatal(e.Start(":1323"))
 }
 
