@@ -66,6 +66,24 @@ func StagesIndex(c echo.Context) error {
 	return c.JSON(http.StatusOK, stages_info)
 }
 
+func StagesShow(c echo.Context) error {
+	stage_id, err := strconv.Atoi(c.Param("id"))
+
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{"error": err})
+	}
+
+	stage := model.Stage{}
+	db.Db.First(&stage, stage_id)
+
+	if stage.UserId == 0 {
+		return c.JSON(http.StatusBadRequest, map[string]interface{}{"error": "Stage Not Found"})
+	}
+
+	return c.File("file/csv/" + strconv.Itoa(stage.UserId) + "/" + strconv.Itoa(stage.Id)+ ".csv")
+}
+
+
 func StagesCreate(c echo.Context) error {
 	tx := db.Db.Begin() // begin transaction
 

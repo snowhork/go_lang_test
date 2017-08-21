@@ -1,4 +1,5 @@
 gom 'github.com/labstack/echo/'
+gom 'github.com/labstack/gommon/log'
 gom 'github.com/jinzhu/gorm'
 gom 'gopkg.in/validator.v2'
 
